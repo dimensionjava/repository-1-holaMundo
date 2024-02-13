@@ -1,11 +1,14 @@
 FROM eclipse-temurin:17-jdk
 
-WORKDIR /app
+#WORKDIR /app
+ARG JAR_FILE
 
-COPY ./target/msvc-hola.jar .
+#COPY ./target/msvc-hola.jar .
+ADD ${JAR_FILE} msvc-hola.jar
+
 #SE ESPECIFICA EL PUERTO PARA SABER QUE PUERTO SE CONFIGURO EN LA APLICACION
 #NO SOBREESCRIBE EL PUERTO QUE SE CONFIGURO EN LA APLICACION
-EXPOSE 8001
+EXPOSE 8081
 
 ENTRYPOINT ["java", "-jar", "msvc-hola.jar"]
 
